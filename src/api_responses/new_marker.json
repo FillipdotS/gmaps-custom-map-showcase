@@ -1,0 +1,13 @@
+[
+    {
+        "pk": 99,
+        "fields": {
+            "lat": "0.0",
+            "lng": "0.0",
+            "published": false,
+            "house_icon": "green",
+            "name": "New marker",
+            "description": ""
+        }
+    }
+]

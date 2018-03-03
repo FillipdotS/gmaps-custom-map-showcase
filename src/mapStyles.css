@@ -1,0 +1,205 @@
+/* --- GENERAL --- */
+#map {
+	height: 100%;
+	width: 100%;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+/* Fullscreen div, gets removed when markers and map properly load */
+#map-loading {
+	position: fixed;
+    padding: 0;
+    margin: 0;
+	z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #5b7f19;
+	color: white;
+	text-align: center;
+}
+
+#map-loading h1 {
+	margin-top: 50px;
+}
+/* --------------- */
+
+
+/* --- TEXT --- */
+hr {
+	margin-bottom: 8px;
+	margin-top: 8px;
+}
+
+a {
+	color: #6a9124;
+}
+
+a:hover, a:focus {
+	color: #516f1a;
+}
+/* --------------- */
+
+
+/* --- SEARCH --- */
+#search-div {
+	margin: 14px;
+	width: 330px;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+	background-color: white;
+}
+
+#search-div .form-control {
+	border-radius: 0px;
+	border-width: 0px;
+}
+
+#search-div button {
+	border-width: 0px;
+	font-size: 15px;
+}
+
+#search-div .right-search-buttons button {
+	border-left: 2px solid #d0d0d0;
+}
+
+#search-div .left-search-buttons button {
+	border-right: 2px solid #d0d0d0;
+}
+
+#search-results-box {
+	border-top: 1px solid #d0d0d0;
+	min-height: 1px;
+	max-height: 80vh;
+	height: auto;
+	overflow-y: auto;
+}
+
+.search-result {
+	padding: 7px;
+	background-color: white;
+	box-shadow: 0px 2px 2px rgba(0,0,0,0.15);
+	box-sizing: border-box;
+}
+
+.search-result:hover {
+	background-color: #f4f4f4;
+	cursor: pointer;
+}
+
+.search-result h4 {
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.search-result p {
+	font-size: 1.2em;
+	margin-bottom: 5px;
+	margin-top: 7px;
+}
+
+.search-result small {
+	margin-right: 5px;
+	font-size: 1.05em;
+}
+/* --------------- */
+
+
+/* --- SIDE NAV --- */
+.sidenav {
+	height: 100%;
+	width: 0px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #fafafa;
+	overflow-x: hidden;
+	transition: 0.5s;
+	box-shadow: 3px 0px 3px rgba(0,0,0,0.25);
+	padding-top: 20px;
+}
+
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 17px;
+	color: #484848;
+	display: block;
+	transition: 0.3s;
+	font-family: Roboto;
+}
+
+.sidenav a:hover {
+	background-color: #e8e8e8;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 0px;
+	padding: 10px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+.sidenav-logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 140px;
+	height: 80px;
+}
+
+#showcase-logo {
+	padding: 0px;
+}
+
+#showcase-logo:hover {
+	background-color: #fafafa;
+}
+
+.sidenav hr {
+	border-color: #7b7b7b;
+}
+/* --------------- */
+
+
+/* --- CONTEXT MENU --- */
+#context-menu {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 99;
+	background-color: #fafafa;
+	display: none;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+}
+
+.context-menu-text {
+	font-family: Roboto;
+	font-size: 13px;
+	color: #484848;
+	padding: 5px 8px 5px 8px;
+	margin: 0px;
+}
+
+.context-menu-text:hover {
+	background-color: #e8e8e8;
+	cursor: pointer;
+}
+/* --------------- */
+
+
+/* --- INFO WINDOW --- */
+#infoWindowMenuContent {
+	padding-right: 5px;
+}
+/* --------------- */

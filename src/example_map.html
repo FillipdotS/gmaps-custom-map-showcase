@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Map Showcase</title>
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta charset="utf-8">
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<!--- <link rel="stylesheet" href="{% static 'css/base_styles.css' %}"> -->
+
+		<link rel="stylesheet" href="mapStyles.css">
+		<script src="mapScript.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQH8YCjUH8bWB-x9yoUCfNbb2XYA8B6Ug&callback=initMap" async defer></script>
+
+		<script>
+			// Usually this would be set by Django, but for the showcase
+			// everyone is an admin
+			IS_USER_STAFF = true;
+		</script>
+	</head>
+
+	<body>
+		<div id="map-loading">
+			<h1>Loading the map <i class="fa fa-spinner fa-pulse"></i></h1>
+			<i><p id="loading-subtitle">initialising webpage</p></i>
+		</div>
+
+		<div id="map"></div>
+
+		<!-- Side Nav -->
+		<div id="side-map-nav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" data-sidenav="side-map-nav">&times;</a>
+			<a href="#" id="showcase-logo">
+				<img class="sidenav-logo" src="visitongithub.png" />
+			</a>
+			<br>
+			<a href="#">Homepage</a>
+
+			<a href="#">Link 1</a>
+			<a href="#">Link 2</a>
+			<a href="#">Link 3</a>
+		</div>
+
+		<!-- Context menu -->
+		<div id="context-menu">
+			<p class="context-menu-text" id="addNewMarkerBtn">Add marker here</p>
+			<!--<p class="context-menu-text" id="copyLAT">Copy LAT</p>
+			<p class="context-menu-text" id="copyLNG">Copy LNG</p>-->
+		</div>
+
+		<!-- All content which is later placed somewhere else (such as info windows) -->
+		<div style="display: none;">
+
+			<!-- Info window content -->
+			<div id="infoWindowMenuContent">
+				<!-- MODAL DEPENDANT -->
+				<p><b>Name: </b><span id="info-name">Name here</span></p>
+				<p><b>Description: </b><span id="info-desc">Desc here</span></p>
+				<span id="info-openmore">
+					<hr style="margin-bottom: 0px;">
+					<p style="text-align: center; cursor: pointer;">
+						<a id="openMoreInfo" href="#">Open more</a>
+					</p>
+				</span>
+
+				<hr style="margin-bottom: 0px;">
+				<p id="info-id" style="margin: 2px;"></p>
+				<button type="button" onclick="deleteMarker()">Delete</button>
+				<button type="button" onclick="dragMarker()">Move</button>
+				<a id="adminEdit" href="#" onclick="alert('This would normally take you to the house\'s relevant cms page.')">Edit</a>
+
+				<i id="publishText">Published </i>
+				<button onclick="publishMarker()" id="publishBtn">Publish</button>
+			</div>
+
+			<!-- Drag edit content -->
+			<div id="infoWindowDrag">
+				<p>Left click somewhere on the map to set a new position for this marker. <b>Click "Set" to confirm the new position. "Cancel" will reset the house back to it's original position.</b></p>
+
+				<button type="button" onclick="resetMarkerPos(); setInfoWinContent(currentClickedMarker.info);">Cancel</button>
+				<button type="button" onclick="setNewMarkerPos();">Set</button>
+			</div>
+
+			<!-- SEARCH FORM (AND MENU BUTTON AS WELL)-->
+			<div id="search-div">
+				<form id="marker-search-form">
+					<div class="input-group">
+
+						<!-- MENU BUTTON -->
+						<span class="input-group-btn left-search-buttons">
+							<button class="btn btn-default" id="show-map-sidemodal-button" data-sidenav="side-map-nav" type="button"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+						</span>
+
+						<input type="text" class="form-control" id="marker-search-input" placeholder="Search houses...">
+
+						<!-- SUBMIT AND CLEAR BUTTONS -->
+						<span class="input-group-btn right-search-buttons">
+							<button class="btn btn-default" id="marker-search-button" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+							<button class="btn btn-default" id="marker-clear-button" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+						</span>
+					</div>
+				</form>
+				<div id="search-results-box">
+				</div>
+			</div>
+
+			<!-- Loading icon -->
+			<span id="loading-span">Loading...</span>
+		</div>
+	</body>
+
+</html>
